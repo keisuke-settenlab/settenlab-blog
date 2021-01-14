@@ -1,34 +1,26 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">
-        settenlab-blog
-      </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
-  </div>
+  <ul>
+    <li v-for="content in contents" :key="content.id">
+      <nuxt-link :to="`/${content.id}`">
+        {{ content.title }}
+      </nuxt-link>
+    </li>
+  </ul>
 </template>
 
 <script>
-export default {}
+import axios from 'axios'
+export default {
+  async asyncData() {
+    const { data } = await axios.get(
+      'https://settenlab-blog.microcms.io/api/v1/blog',
+      {
+        headers: { 'X-API-KEY': 'd1730a7c-b245-4732-b20e-69b58e25235a' }
+      }
+    )
+    return data
+  }
+}
 </script>
 
 <style>

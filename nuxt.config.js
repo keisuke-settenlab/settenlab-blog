@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
@@ -36,5 +38,22 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
+  },
+
+  // Generate
+  generate: {
+    async routes() {
+      const pages = await axios
+        .get('https://settenlab-blog.microcms.io/api/v1/blog?limit=100', {
+          headers: { 'X-API-KEY': 'd1730a7c-b245-4732-b20e-69b58e25235a' }
+        })
+        .then((res) =>
+          res.data.contents.map((content) => ({
+            route: `/${content.id}`,
+            payload: content
+          }))
+        )
+      return pages
+    }
   }
 }
