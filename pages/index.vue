@@ -1,22 +1,19 @@
 <template>
   <ul>
     <li v-for="content in contents" :key="content.id">
-      <nuxt-link :to="`/${content.id}`">
-        {{ content.title }}
-      </nuxt-link>
+      <nuxt-link :to="`/${content.id}`">{{ content.title }}</nuxt-link>
     </li>
   </ul>
 </template>
-
 <script>
 import axios from 'axios'
 export default {
-  async asyncData() {
+  async asyncData({ params }) {
+    const page = params.p || '1'
+    const limit = 2
     const { data } = await axios.get(
-      'https://settenlab-blog.microcms.io/api/v1/blog',
-      {
-        headers: { 'X-API-KEY': 'd1730a7c-b245-4732-b20e-69b58e25235a' }
-      }
+      `https://settenlab-blog.microcms.io/api/v1/blog?limit=${limit}&offset=${(page - 1) * limit}`,
+      { headers: { 'X-API-KEY': 'd1730a7c-b245-4732-b20e-69b58e25235a' } }
     )
     return data
   }
