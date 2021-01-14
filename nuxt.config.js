@@ -1,5 +1,8 @@
 import axios from 'axios'
 
+require('dotenv').config();
+const { BASE_URL, API_KEY } = process.env;
+
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
