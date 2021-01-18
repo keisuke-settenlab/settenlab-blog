@@ -21,12 +21,52 @@ export default {
       return;
     }
     const { data } = await axios.get(
-      `https://settenlab-blog.microcms.io/api/v1/blog/${query.id}?draftKey=${query.draftKey}`,
-      {
-        headers: { 'X-API-KEY': 'd1730a7c-b245-4732-b20e-69b58e25235a' }
-      }
-    )
+      `/.netlify/functions/draft?id=${query.id}&draftKey=${query.draftKey}`,
+    );
     this.data = data;
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.main {
+  width: 960px;
+  margin: 0 auto;
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.publishedAt {
+  margin-bottom: 40px;
+}
+
+.post {
+  & > h1 {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 40px 0 20px;
+    background-color: #eee;
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+
+  & > h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 40px 0 16px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  & > p {
+    line-height: 1.8;
+    letter-spacing: 0.2px;
+  }
+
+  & > ol {
+    list-style-type: decimal;
+    list-style-position: inside;
+  }
+}
+</style>
