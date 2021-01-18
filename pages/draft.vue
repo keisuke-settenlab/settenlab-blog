@@ -2,6 +2,7 @@
   <main v-if="data" class="main">
     <h1 class="title">{{ data.title }}</h1>
     <p class="publishedAt">{{ data.publishedAt }}</p>
+    <p class="category">{{ category && category.name }}</p>
     <div class="post" v-html="data.body"></div>
   </main>
 </template>

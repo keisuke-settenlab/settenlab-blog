@@ -37,6 +37,7 @@ export default {
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
+    '@nuxtjs/dotenv',
     '@nuxtjs/proxy',
   ],
 
@@ -47,6 +48,11 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
+  },
+
+  // Environment
+  env: {
+    API_KEY
   },
 
   // Configration Private or Public
@@ -60,7 +66,7 @@ export default {
   // Generate
   generate: {
     async routes() {
-      const limit = 2
+      const limit = 1
       const range = (start, end) =>
         [...Array(end - start + 1)].map((_, i) => start + i)
 

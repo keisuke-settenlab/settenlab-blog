@@ -11,6 +11,7 @@
     "function:serve": "netlify-lambda serve functions/"
   },
   "dependencies": {
+    "@nuxtjs/dotenv": "^1.4.1",
     "@nuxtjs/proxy": "^2.1.0",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
