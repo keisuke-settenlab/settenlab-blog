@@ -8,12 +8,12 @@
 <script>
 import axios from 'axios'
 export default {
-  async asyncData({ params,  { $config : { apiKey } }}) {
+  async asyncData({ params, $config : { apiKey } }) {
     const page = params.p || '1'
     const limit = 2
     const { data } = await axios.get(
       `https://settenlab-blog.microcms.io/api/v1/blog?limit=${limit}&offset=${(page - 1) * limit}`,
-      { headers: { 'X-API-KEY': 'd1730a7c-b245-4732-b20e-69b58e25235a' } }
+      { headers: { 'X-API-KEY': apiKey } }
     )
     return data
   }
