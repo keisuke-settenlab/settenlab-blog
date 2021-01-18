@@ -72,7 +72,7 @@ export default {
 
       // 一覧のページング
       const pages = await axios
-        .get(`https://your-service-id.microcms.io/api/v1/blog?limit=0`, {
+        .get(`https://settenlab-blog.microcms.io/api/v1/blog?limit=0`, {
           headers: { 'X-API-KEY': API_KEY },
         })
           .then((res) =>
@@ -82,7 +82,7 @@ export default {
           )
 
       const categories = await axios
-        .get(`https://your-service-id.microcms.io/api/v1/categories?fields=id`, {
+        .get(`https://settenlab-blog.microcms.io/api/v1/categories?fields=id`, {
           headers: { 'X-API-KEY': API_KEY },
         })
           .then(({ data }) => {
@@ -93,7 +93,7 @@ export default {
       const categoryPages = await Promise.all(
         categories.map((category) =>
           axios.get(
-            `https://your-service-id.microcms.io/api/v1/blog?limit=0&filters=category[equals]${category}`,
+            `https://settenlab-blog.microcms.io/api/v1/blog?limit=0&filters=category[equals]${category}`,
             { headers: { 'X-API-KEY': API_KEY } }
           )
             .then((res) =>
