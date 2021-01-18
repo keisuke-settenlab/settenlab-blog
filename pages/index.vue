@@ -8,7 +8,7 @@
 <script>
 import axios from 'axios'
 export default {
-  async asyncData({ params }) {
+  async asyncData({ params, $config : { apiKey }}) {
     const page = params.p || '1'
     const categoryId = params.categoryId
     const limit = 2
