@@ -51,10 +51,10 @@ export default {
 
   // Configration Private or Public
   privateRuntimeConfig: {
-    apiKey: `${API_KEY}`
+    apiKey: API_KEY
   },
   publicRuntimeConfig: {
-    apiKey: process.env.NODE_ENV !== 'production' ? `${API_KEY}` : undefined
+    apiKey: process.env.NODE_ENV !== 'production' ? API_KEY : undefined
   },
 
   // Generate

@@ -11,11 +11,11 @@
 import axios from 'axios'
 
 export default {
-  async asyncData({ params, { $config } }) {
+  async asyncData({ params, { $config : { apiKey } }}) {
     const { data } = await axios.get(
       `https://settenlab-blog.microcms.io/api/v1/blog/${params.slug}`,
       {
-        headers: { 'X-API-KEY': $config.apiKey }
+        headers: { 'X-API-KEY': apiKey }
       }
     )
     return data
