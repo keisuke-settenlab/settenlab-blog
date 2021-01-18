@@ -52,7 +52,7 @@ export default {
 
   // Environment
   env: {
-    API_KEY
+    apiKey : API_KEY,
   },
 
   // Configration Private or Public

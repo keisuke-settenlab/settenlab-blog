@@ -14,7 +14,7 @@ exports.handler = async (event) => {
     .get(
       `https://settenlab-blog.microcms.io/api/v1/blog/${id}?draftKey=${draftKey}`,
       {
-        headers: { 'X-API-KEY': process.env.API_KEY },
+        headers: { 'X-API-KEY': process.env.apiKey },
       }
     )
     .then(({ data }) => ({
